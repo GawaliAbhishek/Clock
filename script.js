@@ -13,12 +13,19 @@ function currentTime(){
 
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
-  
-    
-
   let  time=` ${hours} : ${minutes} : ${seconds} ${am_pm}`
    timeEl.innerText=time;
    todate.innerText=today.toDateString();
+
+   // Event Triger Code
+   let cTime=`${hours}:${minutes}:${seconds}`;
+   for(let i=0;i<arr.length;i++){
+       if(arr[i].time === cTime){
+           alert(arr[i].name+" Is Started.....");
+           arr.splice(i,1);
+           console.log(arr);
+       }
+   }
 }
 
 setInterval(currentTime, 1000);
@@ -53,4 +60,29 @@ function closeModal(){
 function clickOut(e){
     if(e.target == modal)
         modal.style.display = 'none';
+}
+
+
+// Event feature and submit button script
+const submitBtn = document.getElementById("submit-btn");
+const eventNameEl = document.getElementById("EventNameInput");
+const eventTimeEl = document.getElementById("Time-Input");
+let arr=[];
+
+// Event Listner of Submit Button
+submitBtn.addEventListener("click",function(){
+    let data =new Data(eventNameEl.value,eventTimeEl.value);
+    arr.push(data);
+    closeModal();
+});
+
+
+
+
+// Class to store the Event data in Object Format
+class Data{
+    constructor(name, time){
+        this.name=name;
+        this.time=time;
+    }
 }
