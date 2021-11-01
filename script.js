@@ -23,8 +23,12 @@ function currentTime(){
        if(arr[i].time === cTime){
            alert(arr[i].name+" Is Started.....");
            arr.splice(i,1);
-           msg.splice(i,1);
-         display(msg);
+           display(arr);
+           console.log(arr);
+       }
+       else{
+           console.log(arr);
+         display(arr);
        }
    }
 }
@@ -69,15 +73,11 @@ const submitBtn = document.getElementById("submit-btn");
 const eventNameEl = document.getElementById("EventNameInput");
 const eventTimeEl = document.getElementById("Time-Input");
 let arr=[];
-let msg=[];
 
 // Event Listner of Submit Button
 submitBtn.addEventListener("click",function(){
     let data =new Data(eventNameEl.value,eventTimeEl.value);
     arr.push(data);
-    let str =`<li>${data.name}  at : ${data.time} `;
-    msg.push(str);
-    display(msg);
     closeModal();
 });
 
@@ -96,6 +96,10 @@ class Data{
 const EventLi = document.getElementById("eventList");
 function display(Msg){
     for(let i=0;i<Msg.length;i++){
-        EventLi.innerHTML=Msg[i];
+        if(Msg[i] == undefined){
+            EventLi.innerHTML=``;
+        }else{
+        EventLi.innerHTML=`${Msg[i].name} is At ${Msg[i].time}`;
+        }
     }
 }
