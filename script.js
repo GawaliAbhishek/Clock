@@ -22,8 +22,8 @@ function currentTime(){
    for(let i=0;i<arr.length;i++){
        if(arr[i].time === cTime){
            alert(arr[i].name+" Is Started.....");
-           arr.splice(i,1);
-           display(arr);
+           arr=[];
+           //display(arr);
            console.log(arr);
        }
        else{
