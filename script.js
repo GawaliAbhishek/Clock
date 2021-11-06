@@ -22,7 +22,8 @@ function currentTime(){
    for(let i=0;i<arr.length;i++){
        if(arr[i].time === cTime){
            alert(arr[i].name+" Is Started.....");
-           arr=[];
+           arr.slice(i,1);
+          window.location.reload();
            //display(arr);
            console.log(arr);
        }
@@ -99,7 +100,7 @@ function display(Msg){
         if(Msg[i] == undefined){
             EventLi.innerHTML=``;
         }else{
-        EventLi.innerHTML=`${Msg[i].name} is At ${Msg[i].time}`;
+        EventLi.innerHTML=`<li>${Msg[i].name} is At ${Msg[i].time}</li>`;
         }
     }
 }
